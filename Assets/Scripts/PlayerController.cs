@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.tag != currentColor && collision.tag != "Star")
         {
             Debug.Log("Game Over");
-            //gameOverPanel.SetActive(true);
+            gameOverPanel.SetActive(true);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (collision.tag == "Star")

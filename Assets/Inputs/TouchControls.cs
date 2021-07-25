@@ -58,7 +58,7 @@ public class @TouchControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""80da6c1d-e542-41b9-ad4f-f84fec8ab76a"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
