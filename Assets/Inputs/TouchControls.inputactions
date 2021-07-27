@@ -44,9 +44,20 @@
                 },
                 {
                     "name": "",
-                    "id": "80da6c1d-e542-41b9-ad4f-f84fec8ab76a",
+                    "id": "7e123679-af93-4c58-9e33-da2749d44b0d",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba36a60e-846c-49bc-ab7a-4b5b007746c4",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "TouchPress",
