@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,8 +19,13 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject gameOverPanel;
 
+    public UnityEvent onColorChanger = new UnityEvent();
+
     private float count;
     private ObjectPooler OP;
+
+    private int ringCount;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,9 +48,11 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.tag == "ColorChanger")
         {
-            SetRandomColor();
+            onColorChanger.Invoke();
+
+            //SetRandomColor();
             Destroy(collision.gameObject);
-            SpawnObject();
+            //SpawnObject();
         }
         else if (collision.tag != currentColor && collision.tag != "Star")
         {
@@ -61,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetRandomColor()
+    public void SetRandomColor()
     {
         int index = Random.Range(0, 3);
         switch (index)
@@ -83,12 +91,5 @@ public class PlayerController : MonoBehaviour
                 sr.color = colorRed;
                 break;
         }
-    }
-    private void SpawnObject()
-    {
-        GameObject circle = OP.GetPooledObject(0);
-        circle.transform.rotation = Quaternion.identity;
-        circle.transform.position += new Vector3(0, 16f); 
-        circle.SetActive(true);
     }
 }

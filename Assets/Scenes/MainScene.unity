@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb594725cd1a1f142a97a7437655d64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: 13
+  dist: 8
 --- !u!4 &74425868
 Transform:
   m_ObjectHideFlags: 0
@@ -955,6 +957,33 @@ MonoBehaviour:
   colorRed: {r: 1, g: 0, b: 0.5019608, a: 1}
   countText: {fileID: 1416460949}
   gameOverPanel: {fileID: 1325709416}
+  onColorChanger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 906504468}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SetRandomColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 74425867}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SpawnObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &906504469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,7 +1523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1325709417
 RectTransform:
   m_ObjectHideFlags: 0
