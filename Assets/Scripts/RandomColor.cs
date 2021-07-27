@@ -6,9 +6,24 @@ using TMPro;
 public class RandomColor : MonoBehaviour
 {
     public TextMeshProUGUI gameOver;
+    public bool active = true;
+    public float interval = 0.5f;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        StartCoroutine(routine());
+    }
+
+    IEnumerator routine()
+    {
+        while (active)
+        {
+            SetRandomColor();
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    void SetRandomColor()
     {
         int index = Random.Range(0, 3);
         switch (index)

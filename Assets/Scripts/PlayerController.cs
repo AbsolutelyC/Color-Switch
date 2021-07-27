@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gameOverPanel;
 
     private float count;
+    private ObjectPooler OP;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         SetRandomColor();
         gameOverPanel.SetActive(false);
+        OP = ObjectPooler.SharedInstance;
     }
 
     private void OnTouchPress()
@@ -42,11 +44,12 @@ public class PlayerController : MonoBehaviour
         {
             SetRandomColor();
             Destroy(collision.gameObject);
+            SpawnObject();
         }
         else if (collision.tag != currentColor && collision.tag != "Star")
         {
             Debug.Log("Game Over");
-            gameOverPanel.SetActive(true);
+            //gameOverPanel.SetActive(true);
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (collision.tag == "Star")
@@ -80,5 +83,12 @@ public class PlayerController : MonoBehaviour
                 sr.color = colorRed;
                 break;
         }
+    }
+    private void SpawnObject()
+    {
+        GameObject circle = OP.GetPooledObject(0);
+        circle.transform.rotation = Quaternion.identity;
+        circle.transform.position += new Vector3(0, 16f); 
+        circle.SetActive(true);
     }
 }
