@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject colorchange = ObjectPooler.SharedInstance.GetPooledObject(1);
         colorchange.transform.rotation = Quaternion.identity;
-        colorchange.transform.position = (9 + dist * count) * Vector3.up;
+        colorchange.transform.position = (17 + dist * count) * Vector3.up;
         colorchange.SetActive(true);
 
         count++;
