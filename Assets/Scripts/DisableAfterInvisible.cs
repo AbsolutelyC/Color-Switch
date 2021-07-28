@@ -11,7 +11,6 @@ public class DisableAfterInvisible : MonoBehaviour
         if (dist >= 12)
         {
             gameObject.SetActive(false);
-            gameObject.transform.position += new Vector3(0, 24f);
         }
     }
 }

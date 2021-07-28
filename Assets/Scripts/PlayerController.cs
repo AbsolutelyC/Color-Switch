@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
@@ -22,9 +21,6 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onColorChanger = new UnityEvent();
 
     private float count;
-    private ObjectPooler OP;
-
-    private int ringCount;
 
     private void Awake()
     {
@@ -34,7 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         SetRandomColor();
         gameOverPanel.SetActive(false);
-        OP = ObjectPooler.SharedInstance;
     }
 
     private void OnTouchPress()
@@ -44,28 +39,24 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.up * jumpForce;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "ColorChanger")
         {
             onColorChanger.Invoke();
-
-            //SetRandomColor();
-            Destroy(collision.gameObject);
-            //SpawnObject();
+            collision.gameObject.SetActive(false);
         }
         else if (collision.tag != currentColor && collision.tag != "Star")
         {
             Debug.Log("Game Over");
-            //gameOverPanel.SetActive(true);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gameOverPanel.SetActive(true);
         }
         else if (collision.tag == "Star")
         {
             count++;
             countText.text = count.ToString();
-            Destroy(collision.gameObject);
-            
+            collision.gameObject.SetActive(false);
+
         }
     }
 
